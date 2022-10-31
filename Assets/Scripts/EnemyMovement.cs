@@ -16,7 +16,10 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-    
+        if (player == null)
+        {
+            player = GameObject.Find("Player");
+        }
     }
 
     // Update is called once per frame
