@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GiveDamage : MonoBehaviour
 {
-    public float damage = 10;
+    public float damage = 10f;
     public bool dieOnHit = false;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -13,10 +13,13 @@ public class GiveDamage : MonoBehaviour
         if (otherHp)
         {
             otherHp.ReduceHp(damage);
+
+            if (dieOnHit)
+            {
+                Destroy(gameObject);
+            }
         }
-        if (dieOnHit)
-        {
-            Destroy(gameObject);
-        }
+
+       
     }
 }

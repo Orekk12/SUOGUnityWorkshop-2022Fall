@@ -16,16 +16,12 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        if (player == null)
-        {
-            player = GameObject.Find("Player");
-        }
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-
         Vector2 direction = player.transform.position - gameObject.transform.position;
 
         direction.Normalize();

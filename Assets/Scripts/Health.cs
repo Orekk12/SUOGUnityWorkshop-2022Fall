@@ -4,45 +4,25 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public float maxHp = 100;
-    public float hp = 100;
-    public bool canTakeDamage = true;
-    public bool canHeal = true;
-
-    private void Start()
-    {
-        hp = maxHp;
-    }
+    public float maxHp = 100f;
+    public float hp = 100f;
 
     public void ReduceHp(float damage)
     {
-        if (canTakeDamage)
-        {
-            UpdateHp(hp - damage);
-        }
-    }
+        hp = hp - damage;
 
-    public void Heal(float healAmount)
-    {
-        if (canHeal)
+        if (hp < 0)
         {
-            UpdateHp(hp + healAmount);
+            hp = 0;
         }
-    }
 
-    private void UpdateHp(float newHp)
-    {
-        if (newHp <= 0)
+        if (hp == 0)
         {
             Kill();
         }
-        if (newHp > maxHp)
-        {
-            hp = maxHp;
-        }
     }
 
-    private void Kill()
+    public void Kill()
     {
         Destroy(gameObject);
     }
